@@ -51,7 +51,7 @@ then function2(?variable , ?variable2)
 **Feedback needed**: Is `"""` acceptable? we need it to determine how to create the parser. I need to make sure it is compatible with the programming synatx used (I have assumed python-like)
 
 ## Rule metadata specifications
-Rules can be describled with metadata, as shown below. To document a rule, a multi-line comment should be placed **below** the rule id. Metadata fields must be declared `@`.
+Rules can be describled with metadata, as shown below. To document a rule, a multi-line comment should be placed **below** the rule id. Metadata fields must be declared starting with the character '`@`'.
 
 - **rule id** [mandatory]: Rule identifier within the `swd` program. It is next to the `rule` keyword.
 - **rule label** [optional]: A human readable label for a rule. If none are provided, the `rule id` will be used. It uses the tag `@label`.
