@@ -29,11 +29,11 @@ then function2(?variable , ?variable2)
 - Multiple line comments: 
 ```
 rule rule_name
-"""
+/*
 Multiple 
 line 
 comment
-"""
+*/
 if  ?variable =<"0"^^xsd:decimal
     and conv:function(?variable2, ?variable, 1) 
 then function2(?variable , ?variable2)
@@ -42,41 +42,39 @@ Multiple line comments syntax may also be applied in a single line:
 
 ```
 rule rule_name
-""" Multiple  line  comment using a single line """
+/* Multiple  line  comment using a single line */
 if  ?variable =<"0"^^xsd:decimal
     and conv:function(?variable2, ?variable, 1) 
 then function2(?variable , ?variable2)
 ```
 
-**Feedback needed**: Is `"""` acceptable? we need it to determine how to create the parser. I need to make sure it is compatible with the programming synatx used (I have assumed python-like)
-
 ## Rule metadata specifications
 Rules can be describled with metadata, as shown below. To document a rule, a multi-line comment should be placed **below** the rule id. Metadata fields must be declared starting with the character '`@`'.
 
-- **rule id** [mandatory]: Rule identifier within the `swd` program. It is next to the `rule` keyword.
+- **rule id** [optional]: Rule identifier within the `swd` program. It is next to the `rule` keyword. If no tule id is added, the documentation program will **not** document that rule.
 - **rule label** [optional]: A human readable label for a rule. If none are provided, the `rule id` will be used. It uses the tag `@label`.
 - **rule description** [optional]: A human readable description of a rule. It uses the tag `@description`.
-- **rule group** [optional]: Mechanism to group rules, which are identified with ids. It uses the tag `@group`. Group ids must be written without spaces and special characters. 
+- **rule group** [optional]: Mechanism to group rules, which are identified with ids. It uses the tag `@group`. Group ids must be written without spaces and special characters. Group ids may be separated by comma ","
 
 ## Example
 Below there is an example documenting the simple rule above.
 
 ```
 rule rule_name
-""" 
+/* 
     @label: only a single line
     @description: long description about what this rule does.
     It may span multiple lines
     @group: only_one_line
-"""
+*/
 if  ?variable =<"0"^^xsd:decimal
     # this comment would be ignored
     and conv:function(?variable2, ?variable, 1) 
 then function2(?variable , ?variable2)
-"""
+/*
 This comment
 would be ignored
-"""
+*/
 ```
 This would extract the following information:
 - rule: `rule_name`
